@@ -3,14 +3,8 @@ name: Caller Workflow
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   call_reusable_workflow:
-    strategy:
-      matrix:
-        environment: [prod, stage, stage_ca, prod_ca]
-        experience: [old, new]
-    uses: dblinkzz/reusable-workflow-dest/.github/workflows/reusable-workflow-concurrency.yaml@main
-    with:
-      environment: ${{ matrix.environment }}
-      experience: ${{ matrix.experience }}
+    uses: jcroyoaun/reusable-workflow-dest/.github/workflows/reusable-workflow-concurrency.yml@main
